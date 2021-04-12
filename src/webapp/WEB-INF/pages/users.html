@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Name</th>
+        <th> LastName</th>
+        <th> Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${users.isEmpty()}">
+        <td colspan="2"> No users</td>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td><span th:text="${user.getFirstName()}"> Name </span></td>
+        <td><span th:text="${user.getLastName()}"> LastName </span></td>
+        <td><span th:text="${user.getEmail()}"> Email </span></td>
+    </tr>
+    </tbody>
+</table>
+
+<div><a class="btn btn-success" href="#" th:href="@{/create}"> Add User </a></div>
+<div><a class="btn btn-primary" href="#" th:href="@{/edit}" th:classappend="${users.isEmpty()} ? 'disabled' : ''"> Edit
+    Users </a></div>
+
+</body>
+</html>

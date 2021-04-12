@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Edit</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/save}"
+      th:object="${form}"
+      method="post">
+    <span>
+        <input type="submit" th:value="Save">
+        <input type="reset" th:value="Reset"/>
+    </span>
+    <tr th:each="user, itemStat : ${form.users}">
+        <div>
+            <td>
+                <input hidden th:name="|users[${itemStat.index}].id|" th:value="${user.getId()}"/>
+            </td>
+            <td>
+                <input th:name="|users[${itemStat.index}].firstName|" th:value="${user.getFirstName()}"/>
+            </td>
+            <td>
+                <input th:name="|users[${itemStat.index}].lastName|" th:value="${user.getLastName()}"/>
+            </td>
+            <td>
+                <input th:name="|users[${itemStat.index}].email|" th:value="${user.getEmail()}"/>
+            </td>
+        </div>
+    </tr>
+</form>
+</body>
+</html>
